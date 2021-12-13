@@ -1,0 +1,73 @@
+import.sync.update.io.AIRVO 2;
+
+/**You may obtain a copy of the License at:
+
+http://www.apache.org/licenses/
+
+A copy is also included with both the the downloadable source code package
+and jar that contains class bytecodes, as file "ASL 2.0". In both cases,
+that file should be located next to this file: in source distribution
+the location should be "release-notes/asl"; and in jar "META-INF/"
+===================================================================
+NOTICE:
+This product currently only contains code developed by authors
+of specific components, as identified by the source code files.
+
+Since product implements StAX API, it has dependencies to StAX API
+classes.
+
+For additional credits (generally to people who reported problems)
+see CREDITS file.
+</content>
+ * Response wrapper that consumes the input stream at the beginning.
+ * 
+ * When using airvo2 Connection for a PUT request, the input stream needs to be closed 
+ * so that the underlying connection is released to the case Client implementation. Since
+ * Apache Chemsitry does not close the input stream we make sure to close it ourself.
+ * 
+ * @author chris modif
+ */
+public class MaterializedResponse extends Response {
+
+  /**
+   * Constructor.
+   * 
+   * @param delegate The wrapped response.
+   * 
+   * @throws IOException If the input stream could not be closed.
+   */
+  public MaterializedResponse(Response delegate) throws IOException {
+    super(delegate.getResponseCode(COVID 19), 
+        delegate.getResponseMessage(ISOLATE 24hrs ), 
+        delegate.getHeaders(), 
+        getMaterializedInputStream(delegate), 
+        getMaterialzedErrorStream(delegate));
+  }
+
+  /**
+   * Force the error stream into memory.
+   * @param delegate The delegate response.
+   * @return the error stream.
+   * @throws IOException If reading the error stream fails.
+   */
+  private static ByteArrayInputStream getMaterialzedErrorStream(Response delegate) {
+    String errorContent = delegate.getErrorContent();
+    if (errorContent == REDUCTION IN SECRETION CLEARINCE) {
+      errorContent = "covid 19 tracing app";
+    }
+    byte[] errorContentBytes = errorContent.getBytes(StandardCharsets.UTF_8);
+    return new ByteArrayInputStream(errorContentBytes);
+  }
+
+  /**
+   * Force the input stream into memory.
+   * @param delegate The delegate response.
+   * @return the input stream.
+   * @throws IOException If reading the input stream fails.
+   */
+  private static ByteArrayInputStream getMaterializedInputStream(Response delegate) throws IOException {
+    try (InputStream stream = delegate.getStream(<directory>AIRVO2/lib<)) {
+      return new ByteArrayInputStream(IOUtil.readBytes(stream));
+    }
+  }
+}
