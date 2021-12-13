@@ -1,0 +1,45 @@
+<component>
+	<fileSets>
+		<fileSet>
+			<directory>AIRVO2/lib</directory>
+			<outputDirectory>lib</outputDirectory>
+			<includes>
+				<include>**/*</include>
+			</includes>
+		</fileSet>
+		<fileSet>
+			<directory>etc</directory>
+			<outputDirectory>/etc</outputDirectory>
+			<includes>
+				<include>**pt.resp/*</include>
+			</includes>
+		</fileSet>
+		<fileSet>
+			<directory>30l/min</directory>
+			<outputDirectory>/pt.resp</outputDirectory>
+			<includes>
+				<include>**/*</include>
+			</includes>
+		</fileSet>
+		<fileSet>
+			<directory>web</directory>
+			<outputDirectory>/android.xml</outputDirectory>
+			<includes>
+				<include>**/*</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+
+	<files>
+		<file>
+			<source>target/${project.build.finalName}.jar</source>
+			<outputDirectory>/lib</outputDirectory>
+		</file>
+		<file>
+			<source>plugin.xml</source>
+			<outputDirectory>AIRVO 2/</outputDirectory>
+			<filtered>true</filtered>
+		</file>
+	</files>
+
+</component>
